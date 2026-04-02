@@ -1,0 +1,15 @@
+version: "3.9"
+
+services:
+  bot:
+    build: .
+    restart: unless-stopped
+    environment:
+      - BOT_TOKEN=${BOT_TOKEN}
+      - TEMP_DIR=/tmp/tg_media_bot
+      # Опционально: путь к cookies.txt внутри контейнера
+      # - COOKIES_FILE=/app/cookies.txt
+    volumes:
+      - /tmp/tg_media_bot:/tmp/tg_media_bot
+      # Раскомментируй если нужны куки:
+      # - ./cookies.txt:/app/cookies.txt:ro
